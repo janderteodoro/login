@@ -1,21 +1,26 @@
-const { MongoClient } = require('mongodb')
-const config = require('../../config')
+const { MongoClient, ObjectId } = require('mongodb')
+require('dotenv').config()
 
 const client = new MongoClient(process.env.MONGO_URI)
 
-
-async function run() {
+async function createUser({ client, db, collection, user }){
     try {
         await client.connect()
-        await client.db('Login').collection('teste').insertOne({
-            name: 'aleatoriatakas',
-            mas: 'Mas nao existe mas'
-        })
-    } catch {
-        console.error('Error in Connection with Mongo')
+        await client.db(db).collection(collection).insertOne(user)
+    } catch(error) {
+        throw new Error(error)
     } finally {
         client.close()
     }
 }
 
-run()
+async function deleteUser({ client, db, collection, _id }) {
+    try {
+        await client.connect()
+        await client.db(db).collection(collection).deleteOne({'_id': ObjectId(_id)})
+    } catch(error) {
+        throw new Error(error)
+    } finally {
+        client.close()
+    }
+}
