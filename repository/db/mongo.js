@@ -24,3 +24,14 @@ async function deleteUser({ client, db, collection, _id }) {
         client.close()
     }
 }
+
+async function findOneUser({ client, db, collection, email}) {
+    try {
+        await client.connect()
+        await client.db(db).collection(collection).findOne({ email })
+    } catch {
+        throw new Error(error)
+    } finally {
+        client.close()
+    }
+}
