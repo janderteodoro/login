@@ -1,0 +1,30 @@
+{
+  "name": "login",
+  "version": "0.0.1",
+  "description": "complete login API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janderteodoro/login.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "login"
+  ],
+  "author": "jandertheodoro@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janderteodoro/login/issues"
+  },
+  "homepage": "https://github.com/janderteodoro/login#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^4.11.0"
+  }
+}
