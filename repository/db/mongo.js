@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const client = new MongoClient(process.env.MONGO_URI)
 
-async function createUser({ client, db, collection, user }){
+async function createUser({ db, collection, user }){
     try {
         await client.connect()
         await client.db(db).collection(collection).insertOne(user)
@@ -14,7 +14,7 @@ async function createUser({ client, db, collection, user }){
     }
 }
 
-async function deleteUser({ client, db, collection, _id }) {
+async function deleteUser({ db, collection, _id }) {
     try {
         await client.connect()
         await client.db(db).collection(collection).deleteOne({'_id': ObjectId(_id)})
@@ -25,13 +25,19 @@ async function deleteUser({ client, db, collection, _id }) {
     }
 }
 
-async function findOneUser({ client, db, collection, email}) {
+async function findOneUser({ db, collection, email}) {
     try {
         await client.connect()
         await client.db(db).collection(collection).findOne({ email })
-    } catch {
+    } catch(error) {
         throw new Error(error)
     } finally {
         client.close()
     }
+}
+
+module.exports = {
+    createUser,
+    deleteUser,
+    findOneUser,
 }
