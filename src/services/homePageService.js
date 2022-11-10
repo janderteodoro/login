@@ -1,13 +1,18 @@
 module.exports = () => {
-    const get = () => { 
+    function get(){ 
         return {
             message: 'agora sim'
         }
     }
 
-    const post = () => { 
+    function post({body}){
+        if (body.name) {
+            return {
+                message: `Olá ${body.name}`
+            }
+        } 
         return {
-            message: 'agora post'
+            message: 'Olá ser que eu nao sei o nome'
         }
     }
 

@@ -10,7 +10,8 @@ module.exports = ({homePageService}) => {
 
     const post = async (request, response) => {
         try {
-            const execute = await homePageService().post()
+            const { body } = request;
+            const execute = await homePageService().post({ body })
             return response.json(execute)
         } catch(error) {
             throw error

@@ -4,7 +4,7 @@
   "description": "complete login API",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node src/index",
     "test": "test"
   },
   "repository": {
