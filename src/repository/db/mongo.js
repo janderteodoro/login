@@ -3,10 +3,11 @@ require('dotenv').config()
 
 const client = new MongoClient(process.env.MONGO_URI)
 
-async function createUser({ db, collection, user }){
+async function createMongo({ db, collection, user }){
     try {
         await client.connect()
-        await client.db(db).collection(collection).insertOne(user)
+        const response = await client.db(db).collection(collection).insertOne(user)
+        return response
     } catch(error) {
         throw new Error(error)
     } finally {
@@ -14,10 +15,11 @@ async function createUser({ db, collection, user }){
     }
 }
 
-async function deleteUser({ db, collection, _id }) {
+async function deleteMongo({ db, collection, _id }) {
     try {
         await client.connect()
-        await client.db(db).collection(collection).deleteOne({'_id': ObjectId(_id)})
+        const response = await client.db(db).collection(collection).deleteOne({'_id': ObjectId(_id)})
+        return response
     } catch(error) {
         throw new Error(error)
     } finally {
@@ -25,10 +27,11 @@ async function deleteUser({ db, collection, _id }) {
     }
 }
 
-async function findOneUser({ db, collection, email}) {
+async function findOneMongo({ db, collection, email}) {
     try {
         await client.connect()
-        await client.db(db).collection(collection).findOne({ email })
+        const response = await client.db(db).collection(collection).findOne({ email })
+        return response 
     } catch(error) {
         throw new Error(error)
     } finally {
@@ -37,7 +40,7 @@ async function findOneUser({ db, collection, email}) {
 }
 
 module.exports = {
-    createUser,
-    deleteUser,
-    findOneUser,
+    createMongo,
+    deleteMongo,
+    findOneMongo,
 }
