@@ -8,6 +8,6 @@ module.exports = {
         homePageService
     }),
     userController: userController({
-        userService, mongo,
+        userService, mongo
     })
 }

@@ -1,11 +1,13 @@
+const CONSTANTS = require('../constants')
+
 module.exports = () => {
     
     async function createUser({ body, createMongo }) {
         const { user } = body
 
         const response = await createMongo({
-            db: 'Login',
-            collection: 'users',
+            db: CONSTANTS.createUser.db,
+            collection: CONSTANTS.createUser.collection,
             user: user,
         })
         if(response.acknowledged){
