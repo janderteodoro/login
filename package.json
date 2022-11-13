@@ -4,7 +4,7 @@
   "description": "complete login API",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node src/index",
     "test": "test"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "joi": "^17.7.0",
     "mongodb": "^4.11.0"
   }
 }
