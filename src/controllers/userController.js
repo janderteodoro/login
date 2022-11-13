@@ -5,6 +5,7 @@ module.exports = ({ userService, mongo, config }) => {
             const execute = await userService().createUser({
                 body,
                 createMongo: mongo.createMongo,
+                findOneMongo: mongo.findOneMongo,
                 config
             })
             return response.json({ execute })
