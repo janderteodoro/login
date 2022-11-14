@@ -1,6 +1,7 @@
 const homePageController = require('./homePage')
 const userController = require('./userController')
 const mongo = require('../repository/db/mongo')
+const config = require('../config')
 const { homePageService, userService } = require('../services')
 
 module.exports = {
@@ -8,6 +9,6 @@ module.exports = {
         homePageService
     }),
     userController: userController({
-        userService, mongo
+        userService, mongo, config
     })
 }

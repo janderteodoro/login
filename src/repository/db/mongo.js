@@ -15,7 +15,7 @@ async function createMongo({ db, collection, user }){
     }
 }
 
-async function deleteMongo({ db, collection, _id }) {
+async function deleteOneMongo({ db, collection, _id }) {
     try {
         await client.connect()
         const response = await client.db(db).collection(collection).deleteOne({'_id': ObjectId(_id)})
@@ -41,6 +41,6 @@ async function findOneMongo({ db, collection, email}) {
 
 module.exports = {
     createMongo,
-    deleteMongo,
+    deleteOneMongo,
     findOneMongo,
 }

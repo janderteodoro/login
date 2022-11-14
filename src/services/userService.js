@@ -1,8 +1,6 @@
-const config = require('../config')
-
 module.exports = () => {
     
-    async function createUser({ body, createMongo, findOneMongo }) {
+    async function createUser({ body, createMongo, findOneMongo, config }) {
         const { user } = body
         const { email } = user
         const responseToFind = await findOneMongo({
@@ -40,7 +38,34 @@ module.exports = () => {
         }
     }
 
+    async function deleteUser({ body, deleteOneMongo, findOneMongo, config }){
+        const { user } = body
+        const { email } = user
+        const responseToFind = await findOneMongo({
+            db: config.createUser.db,
+            collection: config.createUser.collection,
+            email: email,
+        })
+        if(!responseToFind) {
+            return {
+                data: {
+                    message: 'User not found'
+                }
+            }
+        }
+        const id = responseToFind._id
+        const response = await deleteOneMongo({
+            db: config.createUser.db,
+            collection: config.createUser.collection,
+            _id: id,
+        })
+        return {
+            response
+        }
+    }
+
     return {
         createUser,
+        deleteUser,
     }
 }

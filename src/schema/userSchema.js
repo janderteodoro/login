@@ -9,5 +9,12 @@ module.exports = {
             phone: Joi.string().required().regex(regexPhone),
             email: Joi.string().required().regex(regexEmail),  
         })
+    }), 
+    delete: Joi.object().keys({
+        user: Joi.object().required().keys({
+            name: Joi.string().required().min(3).max(30),
+            phone: Joi.string().required().regex(regexPhone),
+            email: Joi.string().required().regex(regexEmail),  
+        })
     })
 }

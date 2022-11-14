@@ -14,7 +14,23 @@ module.exports = ({ userService, mongo, config }) => {
         }
     }
 
+    const deleteUser = async (request, response) => {
+        try {
+            const { body } = request
+            const execute = await userService().deleteUser({
+                body,
+                deleteOneMongo: mongo.deleteOneMongo,
+                findOneMongo: mongo.findOneMongo,
+                config
+            })
+            return response.json({ execute })
+        } catch(error) {
+            throw new Error(error)
+        }
+    }
+
     return {
-        createUser
+        createUser,
+        deleteUser,
     }
 }
