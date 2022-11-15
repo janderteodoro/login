@@ -10,3 +10,46 @@ COLLECTION_USER= The name of collection why will content the users
 SECRET= your secret key for encoded jwt token
 
 PORT=port why the api will run when the same goes start localhost
+
+
+## routes 
+    
+*/user/create* => POST
+
+this route, with correct informations, create the user why has in body of request
+
+curl --location --request POST 'http://localhost:3333/user/create' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user": {
+        "name": "Jander Teodoro",
+        "email": "teste@gmail.com",
+        "phone": "11912341234",
+        "password": "password12345"
+    }
+}'
+
+model of response:
+![response_user_create](src/docs/response_user_create.png)
+
+*/user/login* -> POST
+
+this route, perform de login of user relize the other operators
+
+curl --location --request POST 'http://localhost:3333/user/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user": {
+        "name": "Jander Teodoro",
+        "email": "teste@gmail.com",
+        "phone": "11912341234",
+        "password": "password12345"
+    }
+}'
+
+model of response: 
+![response_user_login](src/docs/response_user_login.png)
+
+*/user/delete* => DELETE
+
+this route, delete the user, if he is logged
