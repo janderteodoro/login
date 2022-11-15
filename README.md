@@ -1,6 +1,6 @@
 # This service has as function of performing the CRUD users, including login with JWT
 
-## Environment variables
+## ENVIRONMENTS VARIABLES
 MONGO_URI= Your string connection with mongo, for example, in my case i used the mongo <https://www.mongodb.com/atlas/database>. Is a free version mongo, including the host
 
 ```
@@ -13,7 +13,7 @@ SECRET= your secret key for encoded jwt token
 PORT=port why the api will run when the same goes start localhost
 ```
 
-## <font color="red"> routes </font> 
+## ROUTES
     
 ### **/user/create** => POST
 
