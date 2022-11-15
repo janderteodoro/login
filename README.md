@@ -18,7 +18,7 @@ PORT=port why the api will run when the same goes start localhost
 ### **/user/create** => POST
 
 this route, with correct informations, create the user why has in body of request
-
+```
 curl --location --request POST 'http://localhost:3333/user/create' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -29,7 +29,7 @@ curl --location --request POST 'http://localhost:3333/user/create' \
         "password": "password12345"
     }
 }'
-
+```
 model of response:<br>
 ![response_user_create](src/docs/response_user_create.png)
 
@@ -37,6 +37,7 @@ model of response:<br>
 
 this route, perform de login of user relize the other operators
 
+```
 curl --location --request POST 'http://localhost:3333/user/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -47,6 +48,7 @@ curl --location --request POST 'http://localhost:3333/user/login' \
         "password": "password12345"
     }
 }'
+```
 
 model of response:<br>
 ![response_user_login](src/docs/response_user_login.png)
