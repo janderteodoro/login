@@ -35,7 +35,7 @@ model of response:<br>
 
 ### **/user/login** -> POST
 
-this route, perform de login of user relize the other operators
+this route, perform de login of user relize the other operators returning the token why is used for others routes
 
 ```
 curl --location --request POST 'http://localhost:3333/user/login' \
