@@ -14,7 +14,7 @@ PORT=port why the api will run when the same goes start localhost
 
 ## routes 
     
-*/user/create* => POST
+**/user/create** => POST
 
 this route, with correct informations, create the user why has in body of request
 
@@ -32,7 +32,7 @@ curl --location --request POST 'http://localhost:3333/user/create' \
 model of response:
 ![response_user_create](src/docs/response_user_create.png)
 
-*/user/login* -> POST
+**/user/login** -> POST
 
 this route, perform de login of user relize the other operators
 
@@ -50,6 +50,6 @@ curl --location --request POST 'http://localhost:3333/user/login' \
 model of response: 
 ![response_user_login](src/docs/response_user_login.png)
 
-*/user/delete* => DELETE
+**/user/delete** => DELETE
 
 this route, delete the user, if he is logged
