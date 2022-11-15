@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
-    createUser: {
+    user: {
         db: process.env.DB_USER,
         collection: process.env.COLLECTION_USER
     }

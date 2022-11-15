@@ -4,8 +4,8 @@ module.exports = () => {
         const { user } = body
         const { email } = user
         const responseToFind = await findOneMongo({
-            db: config.createUser.db,
-            collection: config.createUser.collection,
+            db: config.user.db,
+            collection: config.user.collection,
             email: email,
         })
         if(responseToFind !== null) {
@@ -16,8 +16,8 @@ module.exports = () => {
             }        
         }
         const response = await createMongo({
-            db: config.createUser.db,
-            collection: config.createUser.collection,
+            db: config.user.db,
+            collection: config.user.collection,
             user: user,
         })
         if(response.acknowledged){
@@ -42,8 +42,8 @@ module.exports = () => {
         const { user } = body
         const { email } = user
         const responseToFind = await findOneMongo({
-            db: config.createUser.db,
-            collection: config.createUser.collection,
+            db: config.user.db,
+            collection: config.user.collection,
             email: email,
         })
         if(!responseToFind) {
@@ -55,8 +55,8 @@ module.exports = () => {
         }
         const id = responseToFind._id
         const response = await deleteOneMongo({
-            db: config.createUser.db,
-            collection: config.createUser.collection,
+            db: config.user.db,
+            collection: config.user.collection,
             _id: id,
         })
         return {

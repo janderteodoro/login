@@ -39,8 +39,35 @@ async function findOneMongo({ db, collection, email}) {
     }
 }
 
+async function updateOneMongo({ db, collection, id, newData }) {
+    try {
+        await client.connect()
+        const response = await client.db(db).collection(collection).updateOne({ '_id': ObjectId(id) }, { $set: newData })
+        return response
+    } catch(error) {
+        throw new Error(error)
+    } finally {
+        client.close()
+    }
+}
+
+async function listAllDataMongo({ db, collection }) {
+    try {
+        await client.connect()
+        const response = await client.db(db).collection(collection).find().toArray()
+        return response
+    } catch (error) {
+        throw new Error(error)
+    } finally {
+        client.close()
+    }
+}
+
+
 module.exports = {
     createMongo,
     deleteOneMongo,
     findOneMongo,
+    updateOneMongo,
+    listAllDataMongo,
 }
