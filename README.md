@@ -13,7 +13,7 @@ SECRET= your secret key for encoded jwt token
 PORT=port why the api will run when the same goes start localhost
 ```
 
-## routes 
+## <font color=\"red\"> routes </font> 
     
 ### **/user/create** => POST
 
