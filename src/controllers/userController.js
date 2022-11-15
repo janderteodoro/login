@@ -1,4 +1,4 @@
-module.exports = ({ userService, mongo, config }) => {
+module.exports = ({ userService, mongo, config, jwt }) => {
     const createUser = async (request, response) => {
         try {
             const { body } = request
@@ -8,7 +8,7 @@ module.exports = ({ userService, mongo, config }) => {
                 findOneMongo: mongo.findOneMongo,
                 config
             })
-            return response.json({ execute })
+            return response.json(execute)
         } catch(error) {
             throw new Error(error)
         }
@@ -23,7 +23,7 @@ module.exports = ({ userService, mongo, config }) => {
                 findOneMongo: mongo.findOneMongo,
                 config
             })
-            return response.json({ execute })
+            return response.json(execute)
         } catch(error) {
             throw new Error(error)
         }
@@ -35,8 +35,23 @@ module.exports = ({ userService, mongo, config }) => {
                 listAllDataMongo: mongo.listAllDataMongo,
                 config
             })
-            return response.json({ execute })
+            return response.json(execute)
         } catch(error) {
+            throw new Error(error)
+        }
+    }
+
+    const loginUser = async(request, response) => {
+        try {
+            const { body } = request
+            const execute = await userService().loginUser({
+                body,
+                findOneMongo: mongo.findOneMongo,
+                config,
+                jwt
+            })
+            return response.json(execute)
+        } catch (error) {
             throw new Error(error)
         }
     }
@@ -45,5 +60,6 @@ module.exports = ({ userService, mongo, config }) => {
         createUser,
         deleteUser,
         listUsers,
+        loginUser,
     }
 }

@@ -11,7 +11,7 @@ module.exports = () => {
         if(responseToFind !== null) {
             return {
                 data: {
-                    messge: 'User alraedy exist'
+                    message: 'User alraedy exist'
                 }
             }        
         }
@@ -74,9 +74,39 @@ module.exports = () => {
         }
     }
 
+    async function loginUser({ findOneMongo, body, config, jwt }) {
+        const { user } = body
+        const responseDb = await findOneMongo({
+            db: config.user.db,
+            collection: config.user.collection,
+            email: user.email
+        })
+        if(!responseDb) return {
+            message: 'User not found'
+        }
+        const { password, _id: { id } } = responseDb
+        if (!(password === user.password)){
+            return {
+                flow: 'Incorrect password'
+            }
+        }
+        const token = jwt.sign({ id }, config.user.secretKeyToken, {
+            expiresIn: 300
+        })
+        if (!token) {
+            return {
+                flow: 'error generating token'
+            }
+        }
+        return {
+            tokenAuth: token
+        }
+    }
+
     return {
         createUser,
         deleteUser,
         listUsers,
+        loginUser
     }
 }

@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const homePageController = require('./homePage')
 const userController = require('./userController')
 const mongo = require('../repository/db/mongo')
@@ -9,6 +10,6 @@ module.exports = {
         homePageService
     }),
     userController: userController({
-        userService, mongo, config
+        userService, mongo, config, jwt
     }),
 }

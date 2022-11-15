@@ -7,7 +7,8 @@ module.exports = {
         user: Joi.object().required().keys({
             name: Joi.string().required().min(3).max(30),
             phone: Joi.string().required().regex(regexPhone),
-            email: Joi.string().required().regex(regexEmail),  
+            email: Joi.string().required().regex(regexEmail),
+            password: Joi.string().required().min(8).max(16)
         })
     }), 
     delete: Joi.object().keys({
