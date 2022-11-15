@@ -10,5 +10,5 @@ module.exports = {
     }),
     userController: userController({
         userService, mongo, config
-    })
+    }),
 }

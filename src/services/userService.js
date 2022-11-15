@@ -64,8 +64,19 @@ module.exports = () => {
         }
     }
 
+    async function listUsers({ listAllDataMongo, config }) {
+        const response = await listAllDataMongo({
+            db: config.user.db,
+            collection: config.user.collection,
+        })
+        return {
+            response
+        }
+    }
+
     return {
         createUser,
         deleteUser,
+        listUsers,
     }
 }

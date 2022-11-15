@@ -29,8 +29,21 @@ module.exports = ({ userService, mongo, config }) => {
         }
     }
 
+    const listUsers = async (request, response) => {
+        try {
+            const execute = await userService().listUsers({
+                listAllDataMongo: mongo.listAllDataMongo,
+                config
+            })
+            return response.json({ execute })
+        } catch(error) {
+            throw new Error(error)
+        }
+    }
+
     return {
         createUser,
         deleteUser,
+        listUsers,
     }
 }
