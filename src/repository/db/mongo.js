@@ -15,7 +15,7 @@ async function createMongo({ db, collection, user }){
     }
 }
 
-async function deleteMongo({ db, collection, _id }) {
+async function deleteOneMongo({ db, collection, _id }) {
     try {
         await client.connect()
         const response = await client.db(db).collection(collection).deleteOne({'_id': ObjectId(_id)})
@@ -39,8 +39,35 @@ async function findOneMongo({ db, collection, email}) {
     }
 }
 
+async function updateOneMongo({ db, collection, id, newData }) {
+    try {
+        await client.connect()
+        const response = await client.db(db).collection(collection).updateOne({ '_id': ObjectId(id) }, { $set: newData })
+        return response
+    } catch(error) {
+        throw new Error(error)
+    } finally {
+        client.close()
+    }
+}
+
+async function listAllDataMongo({ db, collection }) {
+    try {
+        await client.connect()
+        const response = await client.db(db).collection(collection).find().toArray()
+        return response
+    } catch (error) {
+        throw new Error(error)
+    } finally {
+        client.close()
+    }
+}
+
+
 module.exports = {
     createMongo,
-    deleteMongo,
+    deleteOneMongo,
     findOneMongo,
+    updateOneMongo,
+    listAllDataMongo,
 }
