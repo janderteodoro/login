@@ -17,9 +17,9 @@ module.exports = () => (request, response, next) => {
                     flow: 'Failed to authenticate token'
                 })
             }
+            request.userId = decoded.id
+            next()
         })
-        request.userId = decoded.id
-        next()
     } catch (error) {
         throw new Error(error)
     }
