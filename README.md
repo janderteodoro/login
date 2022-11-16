@@ -64,4 +64,22 @@ curl --location --request GET 'http://localhost:3333/user/list' \
 model of response: <br>
 ![response_user_list](src/docs/response_user_list.png)
 
+### **user/delete** -> DELETE
 
+This route, like the name, delete one user
+
+```
+curl --location --request DELETE 'http://localhost:3333/user/delete' \
+--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6Wzk5LDExNSwyMTAsMjA5LDEyNiwxOTYsMTQsODIsMjAwLDIwMSwyMDQsMTE4XX0sImlhdCI6MTY2ODU2NjM3OCwiZXhwIjoxNjY4NTY2Njc4fQ.lXQoen4PNp41svbudIzY_q5-RNfp6TSOR4XahkkWqLg' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user": {
+        "name": "Jander Teodoro",
+        "email": "jandertheodoro@gmail.com",
+        "phone": "11974050320"
+    }
+}'
+```
+
+model of response: <br>
+![response_user_dele](src/docs/response_user_delete.png)
