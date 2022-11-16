@@ -49,10 +49,19 @@ curl --location --request POST 'http://localhost:3333/user/login' \
     }
 }'
 ```
-
 model of response:<br>
 ![response_user_login](src/docs/response_user_login.png)
 
-**/user/delete** => DELETE
+### **/user/list** -> GET
 
-this route, delete the user, if he is logged
+This route is reponsible for return all users registered in db
+
+```
+curl --location --request GET 'http://localhost:3333/user/list' \
+--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJ0eXBlIjoiQnVmZmVyIiwiZGF0YSI6Wzk5LDExNSwyMTAsMjA5LDEyNiwxOTYsMTQsODIsMjAwLDIwMSwyMDQsMTE4XX0sImlhdCI6MTY2ODU2NTExMiwiZXhwIjoxNjY4NTY1NDEyfQ.PFX8T8geLzxN_Mhxu2MZNB3eZOX___Yf8Z2DKD-p39E' \
+--data-raw ''
+```
+model of response: <br>
+![response_user_list](src/docs/response_user_list.png)
+
+
