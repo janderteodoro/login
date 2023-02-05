@@ -3,6 +3,15 @@
 This is a login API, using JWT authorizer for validate some routes. For running this application locally, you will need have a node 14.x installed at yout machine.
 
 
+## Big Picture
+```mermaid
+ graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+
 ## Ambient Varibales
 ```
 MONGO_URI=Your connection string with mongo
