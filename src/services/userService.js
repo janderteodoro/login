@@ -1,6 +1,6 @@
 module.exports = () => {
     
-    async function createUser({ body, createMongo, findOneMongo, config }) {
+    const createUser = async ({ body, createMongo, findOneMongo, config }) => {
         const { user } = body
         const { email } = user
         const responseToFind = await findOneMongo({
@@ -38,7 +38,7 @@ module.exports = () => {
         }
     }
 
-    async function deleteUser({ body, deleteOneMongo, findOneMongo, config }){
+    const deleteUser = async ({ body, deleteOneMongo, findOneMongo, config }) => {
         const { user } = body
         const { email } = user
         const responseToFind = await findOneMongo({
@@ -64,7 +64,7 @@ module.exports = () => {
         }
     }
 
-    async function listUsers({ listAllDataMongo, config }) {
+    const listUsers = async ({ listAllDataMongo, config }) =>{
         const response = await listAllDataMongo({
             db: config.user.db,
             collection: config.user.collection,
@@ -74,7 +74,7 @@ module.exports = () => {
         }
     }
 
-    async function loginUser({ findOneMongo, body, config, jwt }) {
+    const loginUser = async ({ findOneMongo, body, config, jwt }) => {
         const { user } = body
         const responseDb = await findOneMongo({
             db: config.user.db,
